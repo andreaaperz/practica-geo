@@ -2,9 +2,27 @@
 	"country": "Mexico",
 	"cases": 203
 }, {
-	"country": "Panama",
+	"country": "Panamá",
 	"cases": 200
 }, {
 	"country": "Colombia",
 	"cases": 196
+}, {
+	"country": "Estados Unidos",
+	"cases": 726
+}, {
+	"country": "Argentina",
+	"cases": 254
+}, {
+	"country": "Francia",
+	"cases": 532
+}, {
+	"country": "Canadá",
+	"cases": 986
+}, {
+	"country": "Rusia",
+	"cases": 232
+}, {
+	"country": "Australia",
+	"cases": 81
 }]

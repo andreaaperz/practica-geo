@@ -1,0 +1,23 @@
+{
+  "name": "practica-geo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start" : "electron main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andreaaperz/practica-geo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andreaaperz/practica-geo/issues"
+  },
+  "homepage": "https://github.com/andreaaperz/practica-geo#readme",
+  "description": "",
+  "dependencies": {
+    "electron": "^12.0.1"
+  }
+}

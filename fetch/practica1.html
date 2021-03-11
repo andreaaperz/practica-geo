@@ -5,10 +5,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fetch1</title>
+
+    <style>
+
+        body{
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            background: #fff7dd;
+        }
+
+        #padre {
+            display: flex;
+            vertical-align: middle;
+            margin-top: 10%;
+            justify-content: center;
+        }
+        #hijo {
+            padding: 10px;
+            margin: 10px;
+            background-color: #ea9775;
+        }
+
+        h1, #paises{
+            text-align: center;
+            color:white;
+        }
+    </style>
+
 </head>
 <body>
 
-    <div id="paises"></div>
+
+    <div id="padre">
+        <div id="hijo">
+            <div class="row">
+                <h1>CASOS DE CORONAVIRUS</h1>
+                <div id="paises">
+            </div>
+        </div>
+    </div>
+        
+
     <script>
         var paises = document.getElementById("paises");
         fetch('datos.json')
@@ -19,7 +55,7 @@
                 datos.forEach(registro => {
                     console.log(registro.country);
                     let nombre = document.createElement("p");
-                    nombre.textContent = "País " + registro.country + ", casos: " + registro.cases;
+                    nombre.textContent = "Número de casos en " + registro.country + ": " + registro.cases;
                     paises.appendChild(nombre)
                 });
             });
