@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Fetch4</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <style>
+        #map {
+        height: 100%;
+        }
+    
+        html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        }
+    </style>
+
+    </head>
+
+    <body>
+
+    <div id="map"></div>
+
+    <script>
+    
+    var coordenadas = {
+        lat: 0, 
+        lng: 0
+        }
+
+    var propiedades = {
+        center: coordenadas,
+        zoom: 2
+        }
+
+    function iniciaMapa() {
+    fetch('paises.json')
+    .then(function(response) {
+
+        response.json().then(function(datos) {
+
+            const map = new google.maps.Map(document.getElementById('map'), propiedades);
+
+            //console.log(datos);
+
+            datos.forEach( marcador => {
+
+            fetch('https://corona.lmao.ninja/v3/covid-19/countries')
+            .then(function(respuesta) {
+
+                respuesta.json().then(function(datospaises) {
+                    datospaises.forEach( registro => {
+                        
+                    if(registro.country==marcador.CountryName){
+
+                    var informacion = "<strong>País:</strong> "+ registro.country +"<br><strong>Casos:</strong> " + registro.cases;
+                    var infowindow = new google.maps.InfoWindow({
+                        content: informacion
+                    });
+
+                    let marker = new google.maps.Marker({
+                        map: map,
+                        position: new google.maps.LatLng(marcador.CapitalLatitude, marcador.CapitalLongitude),
+                        title: marcador.CountryName + registro.cases
+                    });
+
+                    marker.addListener('click', function() {
+                        infowindow.open(map, marker);
+                    });
+                        }
+                    });
+                    });
+                });
+            });
+        });
+    })
+
+        .catch(function(error) {
+            console.log('Hubo un problema con la petición Fetch:' + error.message);
+        });
+    }
+    
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3HTGbR2g2fA9AMdMoXbAIYMz2dIONoFs&callback=iniciaMapa" async defer></script>
+    
+    </body>
+</html>
