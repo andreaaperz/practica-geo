@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch 3</title>
+
+    <style>
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin :0;
+            padding: 0;;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="map"></div>
+
+    <script>
+
+        var coordenadas = {
+            lat: 0,
+            lng: 0
+        };
+
+        var propiedades = {
+            center: coordenadas,
+            zoom: 2
+        };
+
+        function obtieneMarcadores(){
+
+            const markers = [
+                {
+                    name: "México",
+                    longitude: "-99.1276",
+                    latitude: "19.427"
+                }, {
+                    name: "Brazil",
+                    longitude: "-47.9292",
+                    latitude: "-15.7801"
+                }, {
+                    name: "España",
+                    longitude: "-3.70327",
+                    latitude: "40.4167"
+                }, {
+                    name: "Austria",
+                    longitude: "14.550072",
+                    latitude: "47.516231"
+                }, {
+                    name: "Alemania",
+                    longitude: "10.451526",
+                    latitude: "51.165691"
+                }, {
+                    name: "Argenitna",
+                    longitude: "-64.0000000",
+                    latitude: "-34.0000000"
+                }, {
+                    name: "Bolivia",
+                    longitude: "-65.0000000",
+                    latitude: "-17.0000000"
+                }, {
+                    name: "Barbados",
+                    longitude: "-59.5333000",
+                    latitude: "13.1667000"
+                }, {
+                    name: "Bulgaria",
+                    longitude: "42.733883",
+                    latitude: "25.48583"
+                }, {
+                    name: "China",
+                    longitude: "35.86166",
+                    latitude: "104.195397"
+                }, {
+                    name: "Canadá",
+                    longitude: "-95.0000000",
+                    latitude: "60.0000000"
+                }, {
+                    name: "Dianamarca",
+                    longitude: "9.501785",
+                    latitude: "56.26392"
+                }, {
+                    name: "Costa Rica",
+                    longitude: "-84.0000000",
+                    latitude: "10.0000000"
+                }, {
+                    name: "Eslovenia",
+                    longitude: "23.424076",
+                    latitude: "53.847818"
+                }, {
+                    name: "Filipinas",
+                    longitude: "12.879721",
+                    latitude: "121.774017"
+                }, {
+                    name: "Nigeria",
+                    longitude: "8.0000000",
+                    latitude: "10.0000000"
+                }, {
+                    name: "Egipto",
+                    longitude: "30.0000000",
+                    latitude: "27.0000000"
+                }, {
+                    name: "Sudáfrica",
+                    longitude: "24.0000000",
+                    latitude: "-29.0000000"
+                }, {
+                    name: "Malí",
+                    longitude: "-4.0000000",
+                    latitude: "17.0000000"
+                }, {
+                    name: "Irán",
+                    longitude: "53.0000000",
+                    latitude: "32.0000000"
+                }, {
+                    name: "India",
+                    longitude: "77.0000000",
+                    latitude: "20.0000000"
+                }, {
+                    name: "Japón",
+                    longitude: "138.0000000",
+                    latitude: "36.0000000"
+                }, {
+                    name: "China",
+                    longitude: "105.0000000",
+                    latitude: "35.0000000"
+                }, {
+                    name: "Rusia",
+                    longitude: "100.0000000",
+                    latitude: "60.0000000"
+                }, {
+                    name: "Australia",
+                    longitude: "133.0000000",
+                    latitude: "-27.0000000"
+                }, {
+                    name: "Nueva Zelanda",
+                    longitude: "174.0000000",
+                    latitude: "-41.0000000"
+                }, {
+                    name: "Estados Unidos",
+                    longitude: "-97.0000000",
+                    latitude: "38.0000000"
+                }
+            ];
+            
+            return markers;
+        };
+
+
+        function iniciaMapa(){
+
+            const map = new google.maps.Map(document.getElementById('map'),propiedades);
+
+            const marcadores = obtieneMarcadores();
+
+            console.log(marcadores);
+
+            for( marcador of  marcadores){
+
+                let marker = new google.maps.Marker({
+                    map: map,
+                    position: new google.maps.LatLng(marcador.latitude, marcador.longitude),
+                    title: marcador.name
+                });
+
+            }
+
+
+        };
+
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3HTGbR2g2fA9AMdMoXbAIYMz2dIONoFs&callback=iniciaMapa" async defer></script>
+
+    
+</body>
+</html>

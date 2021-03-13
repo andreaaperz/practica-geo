@@ -11,7 +11,7 @@ let win
 function createWindow(){
 	win = new BrowserWindow ({width: 800, height:600})
 	win.loadURL(url.format({
-		pathname: path.join(__dirname, './fetch/practica2.html'),
+		pathname: path.join(__dirname, './fetch/practica3.html'),
 		protocol: 'file',
 		slashes: true
 	}))
