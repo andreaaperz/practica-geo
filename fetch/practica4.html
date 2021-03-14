@@ -56,7 +56,13 @@
                         
                     if(registro.country==marcador.CountryName){
 
-                    var informacion = "<strong>País:</strong> "+ registro.country +"<br><strong>Casos:</strong> " + registro.cases;
+                    var informacion = "<strong>País:</strong> "+ 
+                    registro.country +"<br><strong>Casos:</strong> " + 
+                    registro.cases +"<br><strong>Casos de Hoy:</strong> " + 
+                    registro.todayCases +"<br><strong>Activos:</strong> " + 
+                    registro.active + registro.cases +"<br><strong>Muertes:</strong> " + 
+                    registro.deaths +"<br><strong>Pruebas:</strong> " + 
+                    registro.tests;
                     var infowindow = new google.maps.InfoWindow({
                         content: informacion
                     });
@@ -67,7 +73,7 @@
                         title: marcador.CountryName + registro.cases
                     });
 
-                    marker.addListener('click', function() {
+                    marker.addListener('mouseover', function() {
                         infowindow.open(map, marker);
                     });
                         }
