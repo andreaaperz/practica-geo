@@ -1,0 +1,214 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map Options</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style>
+        html,
+        body {
+            margin: 0px;
+            height: 100%;
+            background-image: linear-gradient(180deg, #7d4159 0, #773959 12.5%, #6f3159 25%, #652859 37.5%, #591f59 50%, #4b185a 62.5%, #3a135b 75%, #24125d 87.5%, #00125f 100%);
+        }
+
+        #mapa1,
+        #mapa2,
+        #mapa3,
+        #mapa4,
+        #mapa5,
+        #mapa6 {
+            width: 100%;
+            height: 75%;
+            border-radius: 6pt;
+        }
+
+        #carouselExampleControls{
+            align-self: center;
+            vertical-align: middle;
+            padding-left: 7%;
+            padding-right: 7%;
+        }
+
+        p{
+            text-align: center;
+            font-size: 20;
+            color: white;
+            margin-top: 9;
+        }
+        h1{
+            margin-top: 13pt;
+            color:white;
+            font-weight: 500;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Map Options</h1>
+
+    <div id="carouselExampleControls" class="carousel slide mt-3" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="col">
+                    <div id="mapa1"></div>
+                    <p>Mapa con controles estándar</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="col">
+                    <div id="mapa2"></div>
+                    <p>Mapa sin controles</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="col">
+                    <div id="mapa3"></div>
+                    <p>Mapa con zoom desactivado</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="col">
+                    <div id="mapa4"></div>
+                    <p>Mapa con ControlOptions</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="col">
+                    <div id="mapa5"></div>
+                    <p>Mapa con ControlPosition</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="col">
+                    <div id="mapa6"></div>
+                    <p>Mapa con Restricting MapBounds</p>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev" style="color: brown;">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+
+    <script>
+
+        function iniciaMapa() {
+
+
+            var coordenadas = { lat: 21.152639, lng: -101.711598 };
+
+            var propiedades1 = {
+                center: coordenadas,
+                zoom: 12
+            };
+
+            var mapa1 = new google.maps.Map(document.getElementById('mapa1'), propiedades1);
+
+
+            var propiedades2 = {
+                center: coordenadas,
+                zoom: 12,
+                disableDefaultUI: true
+            };
+
+            var mapa2 = new google.maps.Map(document.getElementById('mapa2'), propiedades2);
+
+            var propiedades3 = {
+                center: coordenadas,
+                zoom: 12,
+                zoomControl: false,
+                scaleControl: false
+            };
+
+            var mapa3 = new google.maps.Map(document.getElementById('mapa3'), propiedades3);
+
+
+            var propiedades4 = {
+                center: coordenadas,
+                zoom: 12,
+                mapTypeControl: true,
+                mapTypeControlOptions: {
+                    style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+                    mapTypeIds: ['roadmap', 'satellite', 'terrain']
+                }
+
+            };
+            var mapa4 = new google.maps.Map(document.getElementById('mapa4'), propiedades4);
+
+
+            var propiedades5 = {
+                center: coordenadas,
+                zoom: 12,
+                mapTypeControl: true,
+                mapTypeControlOptions: {
+                    style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+                    position: google.maps.ControlPosition.TOP_CENTER
+                },
+                zoomControl: true,
+                zoomControlOptions: {
+                    position: google.maps.ControlPosition.LEFT_CENTER
+                },
+                scaleControl: true,
+                streetViewControl: true,
+                streetViewControlOptions: {
+                    position: google.maps.ControlPosition.LEFT_TOP
+                },
+                fullscreenControl: true
+
+            };
+            var mapa5 = new google.maps.Map(document.getElementById('mapa5'), propiedades5);
+
+
+            var limites = {
+                north: 21.390039,
+                south: 20.858414,
+                west: -102.149631,
+                east: -101.092990
+            }
+
+            var propiedades6 = {
+                center: coordenadas,
+                zoom: 12,
+                restriction: {
+                    latLngBounds: limites,
+                    strictBounds: false
+                }
+            };
+            var mapa6 = new google.maps.Map(document.getElementById('mapa6'), propiedades6);
+
+        }
+
+    </script>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3HTGbR2g2fA9AMdMoXbAIYMz2dIONoFs&callback=iniciaMapa"
+        async defer></script>
+
+</body>
+
+</html>
