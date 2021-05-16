@@ -1,0 +1,65 @@
+[
+    {
+        "nombre": "San Pedro Garza García",
+        "estado": "Nuevo León",
+        "coordenadas": {
+            "lat": 25.6573,
+            "lng": -100.402
+        },
+        "habitantes": 123156100
+    },
+    {
+        "nombre": "Zapopan",
+        "estado": "Jalisco",
+        "coordenadas": {
+            "lat": 20.72356,
+            "lng": -103.38479
+        },
+        "habitantes": 1476491
+    },
+    {
+        "nombre": "Cozumel",
+        "estado": "Quintana Roo",
+        "coordenadas": {
+            "lat": 32.4355600,
+            "lng": -117.0433300
+        },
+        "habitantes": 100000
+    },
+    {
+        "nombre": "Tijuana",
+        "estado": "Baja California Norte",
+        "coordenadas": {
+            "lat": 32.503573,
+            "lng": -116.967028
+        },
+        "habitantes": 1321004
+    },
+    {
+        "nombre": "Ciudad de México",
+        "estado": "Cdmx",
+        "coordenadas": {
+            "lat": 19.357272,
+            "lng": -99.147104
+        },
+        "habitantes": 8851080
+    },
+    {
+        "nombre": "Cancún",
+        "estado": "Quintana Roo",
+        "coordenadas": {
+            "lat": 21.17429,
+            "lng": -86.84656
+        },
+        "habitantes": 888797
+    },
+    {
+        "nombre": "Querétaro",
+        "estado": "Querétaro",
+        "coordenadas": {
+            "lat": 20.58806,
+            "lng": -100.38806
+        },
+        "habitantes": 794789
+    }
+]
