@@ -14,7 +14,12 @@
         body {
             margin: 0px;
             padding: 0px;
-            background-color: lightseagreen;
+            background: rgb(63, 94, 251);
+            background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
+        }
+
+        .juan{
+            color:white;
         }
 
         #map {
@@ -30,25 +35,27 @@
 
 <body>
 
-    <div class="container-fluid m-2">
+    <div class="container-fluid my-4">
         <div class="row">
             <div class="col-12 text-center">
                 <h1>Places por ubicación</h1>
             </div>
         </div>
-        <div class="col-4">
-            <select name="tipo" id="tipo" class="form-control">
-                <option value="restaurant">Restaurante</option>
-                <option value="bar">Bar</option>
-                <option value="park">Park</option>
-                <option value="mall">Plaza</option>
-            </select>
-            <ul id="placesList"></ul>
-        </div>
-        <div class="col-12">
-            <div id="map"></div>
-        </div>
+        <div class="row">
+            <div class="col-4">
+                <select name="tipo" id="tipo" class="form-control">
+                    <option value="restaurant">Restaurante</option>
+                    <option value="bar">Bar</option>
+                    <option value="park">Park</option>
+                    <option value="mall">Plaza</option>
+                </select>
 
+                <ul id="placesList"></ul>
+            </div>
+            <div class="col-8">
+                <div id="map"></div>
+            </div>
+        </div>
     </div>
 
 
@@ -124,6 +131,7 @@
 
                 var li = document.createElement('li');
                 li.textContent = place.name;
+                li.className = "juan";
                 placesList.appendChild(li);
 
                 bounds.extend(place.geometry.location);
