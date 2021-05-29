@@ -14,7 +14,8 @@
         body {
             margin: 0px;
             padding: 0px;
-            background-image: radial-gradient(circle at 50% -20.71%, #fe8f62 0, #ff8564 8.33%, #ff7967 16.67%, #ff6c6b 25%, #fd5e6e 33.33%, #f84e73 41.67%, #f23c78 50%, #ea287e 58.33%, #e10e86 66.67%, #d6008f 75%, #ca0098 83.33%, #bb00a3 91.67%, #aa00ae 100%);        }
+            background-color: lightseagreen;
+        }
 
         #map {
             width: 100%;
@@ -31,23 +32,23 @@
 
     <div class="container-fluid m-2">
         <div class="row">
-            <div class="col-12 my-4 text-center">
+            <div class="col-12 text-center">
                 <h1>Places por ubicación</h1>
             </div>
         </div>
-        <div class="col-4 d-flex justify-content-center mb-4">
+        <div class="col-4">
             <select name="tipo" id="tipo" class="form-control">
                 <option value="restaurant">Restaurante</option>
                 <option value="bar">Bar</option>
+                <option value="park">Park</option>
                 <option value="mall">Plaza</option>
-                <option value="park">Parque</option>
             </select>
             <ul id="placesList"></ul>
         </div>
-
-        <div class="col-12 d-flex justify-content-center">
-            <div id="mapa"></div>
+        <div class="col-12">
+            <div id="map"></div>
         </div>
+
     </div>
 
 
@@ -63,9 +64,8 @@
                 zoom: 12
             };
 
-            map = new google.maps.Map(document.getElementById('mapa'), propiedades);
+            map = new google.maps.Map(document.getElementById('map'), propiedades);
             muestraLugares();
-
         }
 
         var tipo = document.getElementById('tipo');
@@ -78,7 +78,6 @@
         });
 
         function muestraLugares() {
-
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(posicion => {
 
@@ -88,19 +87,16 @@
                     };
 
                     var service = new google.maps.places.PlacesService(map);
-                    service.nearbySearch({ location: coordenadas, radius: 1000, type: [valor] }, function (results, status, pagination) {
 
+                    service.nearbySearch({ location: coordenadas, radius: 1000, type: [valor] }, function (results, status, pagination) {
                         if (status !== 'OK') return;
                         crearMarcadores(results);
-
                     });
                 });
             }
         }
 
-
         function crearMarcadores(places) {
-
             var bounds = new google.maps.LatLngBounds();
             console.log(places);
             borraMarcadores();
@@ -122,7 +118,6 @@
                     });
 
                     infowindow.open(map);
-
                     setTimeout(function () { infowindow.close(); }, 3000);
 
                 });
@@ -149,6 +144,7 @@
 
     </script>
 
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
@@ -159,7 +155,10 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAv-m46ebIV9fqkE2fIBGeWunmGmBm2R24&callback=iniciaMapa" async defer></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAv-m46ebIV9fqkE2fIBGeWunmGmBm2R24&callback=iniciaMapa"
+        async defer></script>
 
 </body>
+
 </html>
